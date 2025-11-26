@@ -1,6 +1,6 @@
 import { Button } from "@/components/Button";
 import { Counter } from "@/components/Counter";
-import { TodoItem } from "@/components/TodoItem"
+import { TodoList } from "@/components/TodoList";
 
 export default function Home() {
   return (
@@ -11,11 +11,11 @@ export default function Home() {
       </p>
       <Button label= 'Composant Button' variant= 'primary'></Button>
       <Counter/>
-      <TodoItem title= "test 1" />
-      <TodoItem title= "test 1" />
-      <TodoItem title= "test 1" />
-      <TodoItem title= "test 1" />
-      <TodoItem title= "test 1" />
+      <div >
+
+      </div>
+      <TodoList/>
+
     </main>
   );
 }
