@@ -8,6 +8,7 @@ export function Header() {
     const links = [
         { href: "/", label: "Accueil" },
         { href: "/about", label: "About" },
+        { href: "/tasks", label: "task" },
         { href: "/contact", label: "Contact" },
     ];
 return (

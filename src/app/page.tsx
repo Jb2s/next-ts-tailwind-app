@@ -14,6 +14,15 @@ export default function Home() {
       <div >
 
       </div>
+      {/* bonne pratique pour l'utilisation des lensexternes */}
+       <a
+          href="https://nextjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          Next.js Documentation
+        </a>
       <TodoList/>
 
     </main>
