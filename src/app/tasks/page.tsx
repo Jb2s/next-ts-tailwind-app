@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
-import TaskItem from "../../components/TaskItem";
+import TaskItem from "./components/TaskItem";
+import Image from "next/image";
+
 
 export default function TasksPage() {
   const [tasks, setTasks] = useState<{ title: string; done: boolean }[]>([]);
@@ -13,7 +15,19 @@ export default function TasksPage() {
   };
 
   return (
+    
     <div className="space-y-4">
+       <div>
+      <h2 className="text-xl font-bold mb-4">Bienvenue sur mon app</h2>
+
+      <Image
+        src="/logo.png"
+        width={120}
+        height={120}
+        alt="Logo Next app"
+        className="rounded-xl shadow"
+      />
+    </div>
       <h1 className="text-2xl font-bold">Tasks</h1>
       <div className="flex gap-2">
         <input
@@ -35,5 +49,6 @@ export default function TasksPage() {
         ))}
       </ul>
     </div>
+
   );
 }
