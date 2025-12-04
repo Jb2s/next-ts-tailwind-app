@@ -3,7 +3,6 @@ import { useState } from "react";
 import TaskItem from "./components/TaskItem";
 import Image from "next/image";
 
-
 export default function TasksPage() {
   const [tasks, setTasks] = useState<{ title: string; done: boolean }[]>([]);
   const [newTask, setNewTask] = useState("");
@@ -14,20 +13,29 @@ export default function TasksPage() {
     setNewTask("");
   };
 
-  return (
-    
-    <div className="space-y-4">
-       <div>
-      <h2 className="text-xl font-bold mb-4">Bienvenue sur mon app</h2>
+  const handleUpdate = (index: number) => {
+    setTasks(tasks.map((task, i) => 
+      i === index ? { ...task, done: !task.done } : task
+    ));
+  };
 
-      <Image
-        src="/logo.png"
-        width={120}
-        height={120}
-        alt="Logo Next app"
-        className="rounded-xl shadow"
-      />
-    </div>
+  const handleDelete = (index: number) => {
+    setTasks(tasks.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <h2 className="text-xl font-bold mb-4">Bienvenue sur mon app</h2>
+
+        <Image
+          src="/logo.png"
+          width={120}
+          height={120}
+          alt="Logo Next app"
+          className="rounded-xl shadow"
+        />
+      </div>
       <h1 className="text-2xl font-bold">Tasks</h1>
       <div className="flex gap-2">
         <input
@@ -38,17 +46,22 @@ export default function TasksPage() {
         />
         <button
           onClick={addTask}
-          className="bg-green-500 text-white px-4 py-2 rounded"
+          className="bg-pink-500 text-white px-4 py-2 rounded"
         >
           Add
         </button>
       </div>
       <ul className="space-y-2">
         {tasks.map((task, i) => (
-          <TaskItem key={i} title={task.title} done={task.done} />
+          <TaskItem 
+            key={i} 
+            title={task.title} 
+            done={task.done}
+            onUpdate={() => handleUpdate(i)}
+            onDelete={() => handleDelete(i)}
+          />
         ))}
       </ul>
     </div>
-
   );
 }
